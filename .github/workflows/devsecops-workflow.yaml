@@ -21,10 +21,10 @@ jobs:
         with:
           # Shallow clones should be disabled for a better relevancy of analysis
           fetch-depth: 0
-      - name: Set up JDK 21
+      - name: Set up JDK 17 
         uses: actions/setup-java@v4
         with:
-          java-version: '21'
+          java-version: '17'
           distribution: 'microsoft'
 
       # Speed-up analysis by caching the scanner workspace
@@ -86,7 +86,7 @@ jobs:
         with:
           ref: master
       - name: ZAP Scan
-        uses: zaproxy/action-baseline@v0.11.0  
+        uses: zaproxy/action-baseline@v0.6.1  
         with:
           docker_name: 'owasp/zap2docker-stable'
           target: 'http://testphp.vulnweb.com/'
