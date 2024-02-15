@@ -5,7 +5,7 @@ on:
   # a pull request.
   push:
     branches:
-      - main
+      - master
   pull_request:
     types:
       - opened
@@ -21,10 +21,10 @@ jobs:
         with:
           # Shallow clones should be disabled for a better relevancy of analysis
           fetch-depth: 0
-      - name: Set up JDK 17
+      - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
-          java-version: '17'
+          java-version: '21'
           distribution: 'microsoft'
 
       # Speed-up analysis by caching the scanner workspace
@@ -82,11 +82,11 @@ jobs:
     name: Run DAST scan on the web application
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: master
       - name: ZAP Scan
-        uses: zaproxy/action-baseline@v0.6.1
+        uses: zaproxy/action-baseline@v0.11.0  
         with:
           docker_name: 'owasp/zap2docker-stable'
           target: 'http://testphp.vulnweb.com/'
