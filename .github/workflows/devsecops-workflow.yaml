@@ -5,7 +5,7 @@ on:
   # a pull request.
   push:
     branches:
-      - main
+      - master
   pull_request:
     types:
       - opened
@@ -85,7 +85,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: main
+          ref: master
       - name: ZAP Scan
         uses: zaproxy/action-baseline@v0.10.0  
         with:
